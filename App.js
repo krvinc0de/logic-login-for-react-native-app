@@ -1,12 +1,31 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import StackNoAuth from './src/router/StackNoAuth';
+import { useEffect, useState } from 'react';
+import BottomTab from './src/router/BottomTab';
 
 export default function App() {
+
+  const [loading, setLoading] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+      setIsLogin(true);
+    }, 2000);
+  }, [])
+  
+  if (loading) return <View style={{flex: 1}}><Text>Loading...</Text></View>
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+        <StatusBar style="auto" />
+        {
+          isLogin ? <BottomTab /> : <StackNoAuth />
+        }
+    </NavigationContainer>
   );
 }
 
