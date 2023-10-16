@@ -3,7 +3,7 @@ export const lightTheme = {
     dark: false,
     currentTheme: 'light',
     colors: {
-        primary: "#BB86FC",
+        primary: "#fff",
         primaryVariant: "#3700B3",
         secondary: "#03DAC6",
         background: "#fff",
@@ -11,7 +11,7 @@ export const lightTheme = {
         onPrimary: "#FFFFFF",
         error: "#CF6679",
         card: "#1E212D",
-        text: "#000",
+        text: "#fff",
         border: "#212630",
         notification: "#EF233C",
     }
