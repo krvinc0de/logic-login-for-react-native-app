@@ -1,14 +1,16 @@
 //import liraries
 import { useTheme } from '@react-navigation/native';
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 // create a component
 const ScreenNoAuth = () => {
 
-    const theme = useTheme()
+    const {theme} = useContext(ThemeContext)
+  console.log(theme, 'here');
 
-    console.log(theme)
+    
 
     return (
         <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
