@@ -1,6 +1,6 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, useColorScheme } from 'react-native';
 import StackNoAuth from './src/router/StackNoAuth';
 import { useEffect, useState } from 'react';
 import BottomTab from './src/router/BottomTab';
@@ -10,17 +10,21 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
 
+  const theme = useColorScheme()
+  
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false);
-      setIsLogin(true);
-    }, 2000);
+        setIsLogin(true);
+        setLoading(false);
+    }, 5000);
   }, [])
   
-  if (loading) return <View style={{flex: 1}}><Text>Loading...</Text></View>
+  if (loading) return <View style={{flex: 1, justifyContent: 'center'}}>
+        <Text>Loading...</Text>
+      </View>
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
         <StatusBar style="auto" />
         {
           isLogin ? <BottomTab /> : <StackNoAuth />
